@@ -1,0 +1,669 @@
+<!--
+  FORTIFY CAR CARE - POPUP CONSULTATION FORM
+
+  Elementor setup:
+  1. Paste this complete file into one HTML widget (ideally near the page footer).
+  2. Add the CSS class "fortify-popup-trigger" to every Elementor button that
+     should open the popup. Do not include the leading dot.
+  3. Alternatively, set a button link to: #fortify-consultation
+  4. Replace the form action value with your lead-handler URL, or connect the
+     submit event to your existing CRM/form workflow.
+-->
+
+<!-- Preview trigger: remove this button after testing if your page already has CTA buttons. -->
+<button class="fortify-demo-trigger fortify-popup-trigger" type="button">
+  Get a Free Consultation
+</button>
+
+<div
+  class="fortify-modal"
+  id="fortify-consultation"
+  aria-hidden="true"
+  data-fortify-modal
+>
+  <div class="fortify-modal__backdrop" data-fortify-close></div>
+
+  <section
+    class="fortify-modal__dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="fortify-modal-title"
+    aria-describedby="fortify-modal-description"
+    tabindex="-1"
+  >
+    <button
+      class="fortify-modal__close"
+      type="button"
+      aria-label="Close consultation form"
+      data-fortify-close
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.75 6.75 17.25 17.25M17.25 6.75 6.75 17.25"></path>
+      </svg>
+    </button>
+
+    <div class="fortify-modal__form-panel">
+      <div class="fortify-modal__form-heading">
+        <p class="fortify-modal__eyebrow">
+          <span></span>
+          Free consultation
+        </p>
+        <h2 id="fortify-modal-title">Let's protect your car</h2>
+        <p id="fortify-modal-description">
+          Share your details. Our specialist will contact you shortly.
+        </p>
+      </div>
+
+      <form
+        class="fortify-form"
+        id="fortify-lead-form"
+        action="#"
+        method="post"
+      >
+        <div class="fortify-form__field">
+          <label for="fortify-name">Full Name</label>
+          <div class="fortify-form__control">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"></path>
+            </svg>
+            <input
+              id="fortify-name"
+              name="full_name"
+              type="text"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="fortify-form__field">
+          <label for="fortify-phone">Phone Number</label>
+          <div class="fortify-form__control">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.2 3.5 10 7.7 7.7 9.4c1.3 2.8 4.1 5.6 6.9 6.9l1.7-2.3 4.2 1.8v3.1c0 .9-.7 1.6-1.6 1.6A15.4 15.4 0 0 1 3.5 5.1c0-.9.7-1.6 1.6-1.6h3.1Z"></path>
+            </svg>
+            <input
+              id="fortify-phone"
+              name="phone_number"
+              type="tel"
+              placeholder="Enter your 10-digit number"
+              autocomplete="tel"
+              inputmode="numeric"
+              pattern="[6-9][0-9]{9}"
+              maxlength="10"
+              title="Enter a valid 10-digit Indian mobile number"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="fortify-form__field">
+          <label for="fortify-car">Car Model</label>
+          <div class="fortify-form__control">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m5 15 1.5-5h11l1.5 5M4 15h16v4H4v-4Zm2 4v1.5M18 19v1.5M7.5 16.9h.01M16.5 16.9h.01"></path>
+            </svg>
+            <input
+              id="fortify-car"
+              name="car_model"
+              type="text"
+              placeholder="e.g. Hyundai Creta"
+              autocomplete="off"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="fortify-form__field">
+          <label for="fortify-service">Select Service</label>
+          <div class="fortify-form__control fortify-form__control--select">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 4.5 6.5V12c0 4.4 3.2 7.8 7.5 9 4.3-1.2 7.5-4.6 7.5-9V6.5L12 3Zm-3 9 2 2 4-4"></path>
+            </svg>
+            <select id="fortify-service" name="service" required>
+              <option value="" selected disabled>Choose a service</option>
+              <option value="Paint Protection Film (PPF)">Paint Protection Film (PPF)</option>
+              <option value="Borophene Coating">Borophene Coating</option>
+              <option value="Graphene Coating">Graphene Coating</option>
+              <option value="Ceramic Coating">Ceramic Coating</option>
+              <option value="Sunfilm">Sunfilm</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Simple bot trap; keep this field visually hidden. -->
+        <div class="fortify-form__website" aria-hidden="true">
+          <label for="fortify-website">Website</label>
+          <input id="fortify-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="fortify-form__submit" type="submit">
+          <span>Get a Free Consultation</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M14 7l5 5-5 5"></path>
+          </svg>
+        </button>
+
+        <p class="fortify-form__privacy">
+          By submitting, you agree to be contacted about your selected service.
+        </p>
+      </form>
+    </div>
+  </section>
+</div>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap");
+
+  :root {
+    --fortify-red: #f0192d;
+    --fortify-red-dark: #c90d20;
+    --fortify-black: #09090b;
+    --fortify-panel: #111114;
+    --fortify-panel-soft: #17171b;
+    --fortify-line: rgba(255, 255, 255, 0.11);
+    --fortify-white: #ffffff;
+    --fortify-muted: #a6a6af;
+  }
+
+  .fortify-demo-trigger {
+    border: 1px solid var(--fortify-red);
+    border-radius: 5px;
+    padding: 14px 23px;
+    background: var(--fortify-red);
+    box-shadow: 0 9px 24px rgba(240, 25, 45, 0.24);
+    color: var(--fortify-white);
+    font: 700 13px/1 "Inter", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  }
+
+  .fortify-demo-trigger:hover {
+    background: #ff2539;
+    box-shadow: 0 12px 30px rgba(240, 25, 45, 0.34);
+    transform: translateY(-2px);
+  }
+
+  .fortify-modal,
+  .fortify-modal * {
+    box-sizing: border-box;
+  }
+
+  .fortify-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 280ms, opacity 220ms ease;
+  }
+
+  .fortify-modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+
+  .fortify-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+  }
+
+  .fortify-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow: hidden auto;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    outline: none;
+    background: var(--fortify-black);
+    box-shadow:
+      0 36px 90px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(240, 25, 45, 0.06);
+    transform: translateY(16px) scale(0.985);
+    opacity: 0;
+    transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 220ms ease;
+  }
+
+  .fortify-modal.is-open .fortify-modal__dialog {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  .fortify-modal__dialog::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 118px;
+    height: 4px;
+    background: var(--fortify-red);
+  }
+
+  .fortify-modal__close {
+    position: absolute;
+    z-index: 6;
+    top: 16px;
+    right: 16px;
+    display: grid;
+    width: 39px;
+    height: 39px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    background: rgba(9, 9, 11, 0.84);
+    color: #fff;
+    cursor: pointer;
+    transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  .fortify-modal__close:hover {
+    border-color: var(--fortify-red);
+    background: var(--fortify-red);
+    transform: rotate(4deg);
+  }
+
+  .fortify-modal__close svg {
+    width: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 1.8;
+  }
+
+  .fortify-modal__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 15px;
+    color: var(--fortify-red);
+    font: 700 10px/1.35 "Inter", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .fortify-modal__eyebrow span {
+    width: 20px;
+    height: 2px;
+    flex: 0 0 20px;
+    background: var(--fortify-red);
+  }
+
+  .fortify-modal__form-heading h2 {
+    font-family: "Oswald", system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .fortify-modal__form-panel {
+    padding: 48px 42px 34px;
+    background:
+      radial-gradient(circle at 94% 0%, rgba(240, 25, 45, 0.09), transparent 32%),
+      #151519;
+  }
+
+  .fortify-modal__form-heading {
+    padding-right: 35px;
+  }
+
+  .fortify-modal__form-heading h2 {
+    margin: 0 0 8px;
+    color: var(--fortify-white);
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .fortify-modal__form-heading > p:last-child {
+    margin: 0 0 27px;
+    color: var(--fortify-muted);
+    font: 400 12px/1.6 "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  .fortify-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .fortify-form__field {
+    min-width: 0;
+  }
+
+  .fortify-form__field label {
+    display: block;
+    margin: 0 0 7px;
+    color: #d7d7dc;
+    font: 600 9px/1.2 "Inter", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .fortify-form__control {
+    position: relative;
+  }
+
+  .fortify-form__control > svg {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 14px;
+    width: 17px;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: #74747d;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.4;
+    pointer-events: none;
+  }
+
+  .fortify-form__control input,
+  .fortify-form__control select {
+    width: 100%;
+    height: 49px;
+    margin: 0;
+    border: 1px solid var(--fortify-line);
+    border-radius: 5px;
+    outline: none;
+    background: #0e0e11;
+    box-shadow: none;
+    color: var(--fortify-white);
+    font: 500 12px/1.2 "Inter", system-ui, -apple-system, sans-serif;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .fortify-form__control input {
+    padding: 0 13px 0 42px;
+  }
+
+  .fortify-form__control select {
+    padding: 0 44px 0 42px;
+    cursor: pointer;
+  }
+
+  .fortify-form__control--select::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 4px);
+    right: 17px;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #92929a;
+    border-bottom: 1.5px solid #92929a;
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+
+  .fortify-form__control input::placeholder {
+    color: #686871;
+    opacity: 1;
+  }
+
+  .fortify-form__control input:hover,
+  .fortify-form__control select:hover {
+    border-color: rgba(255, 255, 255, 0.23);
+  }
+
+  .fortify-form__control input:focus,
+  .fortify-form__control select:focus {
+    border-color: var(--fortify-red);
+    background: #111114;
+    box-shadow: 0 0 0 3px rgba(240, 25, 45, 0.12);
+  }
+
+  .fortify-form__control:focus-within > svg {
+    stroke: var(--fortify-red);
+  }
+
+  .fortify-form__website {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+  }
+
+  .fortify-form__submit {
+    grid-column: 1 / -1;
+    display: flex;
+    width: 100%;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-top: 3px;
+    border: 1px solid var(--fortify-red);
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--fortify-red), #fa2236);
+    box-shadow: 0 10px 26px rgba(240, 25, 45, 0.19);
+    color: var(--fortify-white);
+    font: 700 11px/1 "Inter", system-ui, -apple-system, sans-serif;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+  }
+
+  .fortify-form__submit:hover {
+    box-shadow: 0 13px 31px rgba(240, 25, 45, 0.3);
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+
+  .fortify-form__submit svg {
+    width: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+    transition: transform 180ms ease;
+  }
+
+  .fortify-form__submit:hover svg {
+    transform: translateX(3px);
+  }
+
+  .fortify-form__privacy {
+    grid-column: 1 / -1;
+    margin: -4px 0 0;
+    color: #72727b;
+    font: 400 9px/1.5 "Inter", system-ui, -apple-system, sans-serif;
+    text-align: center;
+  }
+
+  body.fortify-modal-open {
+    overflow: hidden !important;
+  }
+
+  @media (max-width: 800px) {
+    .fortify-modal {
+      padding: 15px;
+    }
+
+    .fortify-modal__dialog {
+      max-width: 520px;
+      max-height: calc(100vh - 30px);
+    }
+
+    .fortify-modal__form-panel {
+      padding: 44px 34px 30px;
+    }
+
+    .fortify-modal__close {
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .fortify-modal {
+      padding: 10px;
+    }
+
+    .fortify-modal__dialog {
+      max-height: calc(100vh - 20px);
+      border-radius: 9px;
+    }
+
+    .fortify-modal__eyebrow {
+      margin-bottom: 11px;
+      font-size: 8px;
+      letter-spacing: 0.1em;
+    }
+
+    .fortify-modal__form-panel {
+      padding: 39px 22px 22px;
+    }
+
+    .fortify-modal__form-heading h2 {
+      font-size: 27px;
+    }
+
+    .fortify-modal__form-heading > p:last-child {
+      margin-bottom: 21px;
+    }
+
+    .fortify-form {
+      gap: 13px;
+    }
+
+    .fortify-form__control input,
+    .fortify-form__control select {
+      height: 47px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fortify-modal,
+    .fortify-modal__dialog,
+    .fortify-modal__close,
+    .fortify-form__submit,
+    .fortify-form__submit svg,
+    .fortify-demo-trigger {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    "use strict";
+
+    var modal = document.querySelector("[data-fortify-modal]");
+    if (!modal) return;
+
+    var dialog = modal.querySelector(".fortify-modal__dialog");
+    var form = modal.querySelector("#fortify-lead-form");
+    var firstField = modal.querySelector("#fortify-name");
+    var lastFocusedElement = null;
+    var focusableSelector =
+      'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), ' +
+      'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    function openModal(event) {
+      if (event) event.preventDefault();
+      lastFocusedElement = document.activeElement;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("fortify-modal-open");
+
+      window.setTimeout(function () {
+        if (firstField) firstField.focus();
+        else dialog.focus();
+      }, 120);
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("fortify-modal-open");
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      var trigger = event.target.closest(
+        '.fortify-popup-trigger, a[href="#fortify-consultation"]'
+      );
+
+      if (trigger) {
+        openModal(event);
+        return;
+      }
+
+      if (event.target.closest("[data-fortify-close]")) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (!modal.classList.contains("is-open")) return;
+
+      if (event.key === "Escape") {
+        closeModal();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      var focusable = Array.prototype.slice
+        .call(modal.querySelectorAll(focusableSelector))
+        .filter(function (element) {
+          return element.offsetParent !== null;
+        });
+
+      if (!focusable.length) return;
+
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    if (form) {
+      form.addEventListener("submit", function (event) {
+        var botField = form.querySelector('input[name="website"]');
+        if (botField && botField.value) {
+          event.preventDefault();
+          return;
+        }
+
+        /*
+          Remove the following block after setting a real form action or adding
+          your AJAX/CRM submission code. It prevents the demo from reloading.
+        */
+        if (form.getAttribute("action") === "#") {
+          event.preventDefault();
+          alert("Popup design is ready. Connect the form action to your lead handler.");
+        }
+      });
+    }
+
+    if (window.location.hash === "#fortify-consultation") {
+      openModal();
+    }
+  })();
+</script>

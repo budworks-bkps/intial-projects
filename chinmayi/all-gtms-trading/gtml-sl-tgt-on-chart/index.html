@@ -1,0 +1,606 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection"
+      content="telephone=no,address=no,email=no,date=no,url=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet">
+
+    <title>Set stoploss/target directly on chart</title>
+
+    <!--[if mso]>
+  <xml>
+    <o:OfficeDocumentSettings>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+  </xml>
+  <![endif]-->
+
+    <style>
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      background: #ffffff;
+    }
+
+    table,
+    td {
+      mso-line-height-rule: exactly;
+      border-collapse: collapse !important;
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+    }
+
+    img {
+      display: block;
+      border: 0;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    table,
+    td,
+    a,
+    p,
+    h1,
+    h2,
+    h3 {
+      font-family: 'Inter Tight', Arial, sans-serif;
+    }
+
+    #MessageViewBody a,
+    a[x-apple-data-detectors] {
+      font-family: inherit !important;
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+
+    .video-link,
+    .video-link:link,
+    .video-link:visited,
+    .video-link strong {
+      color: #5669FF !important;
+      text-decoration: underline !important;
+      font-weight: 700 !important;
+    }
+
+    .email-container {
+      width: 600px;
+      max-width: 600px;
+    }
+
+    .mobile-pad {
+      padding-left: 34px !important;
+      padding-right: 34px !important;
+    }
+
+    .desktop-only {
+      display: table-row;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+
+    .video-link,
+    .video-link:link,
+    .video-link:visited {
+      color: #5669FF !important;
+      text-decoration: underline !important;
+    }
+
+
+    .mobile-only {
+      display: none;
+      max-height: 0;
+      overflow: hidden;
+      mso-hide: all;
+    }
+
+    @media screen and (max-width: 620px) {
+      .email-container {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .mobile-pad {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      .hero-title {
+        font-size: 31px !important;
+        line-height: 35px !important;
+      }
+
+      .hero-subtitle {
+        font-size: 17px !important;
+        line-height: 24px !important;
+      }
+
+      .section-title {
+        font-size: 23px !important;
+        line-height: 28px !important;
+      }
+
+      .feature-title {
+        font-size: 16px !important;
+        line-height: 21px !important;
+      }
+
+      .feature-copy {
+        font-size: 15px !important;
+        line-height: 21px !important;
+      }
+
+      .chart-image {
+        width: 92% !important;
+        max-width: 520px !important;
+      }
+
+      .feature-card {
+        width: 100% !important;
+      }
+
+      .footer-copy {
+        font-size: 10px !important;
+        line-height: 15px !important;
+      }
+
+      .footer-links td,
+      .footer-links a {
+        font-size: 10px !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .mobile-pad {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      .hero-title {
+        font-size: 28px !important;
+        line-height: 32px !important;
+      }
+
+      .hero-subtitle {
+        font-size: 16px !important;
+        line-height: 23px !important;
+      }
+
+      .cta-link {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+    }
+  </style>
+  </head>
+
+  <body id="body"
+    style="margin:0; padding:0; width:100%; background-color:#ffffff;">
+    <div
+      style="display:none; font-size:1px; color:#ffffff; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+      Trade F&amp;O from the chart, manage risk, track live P&amp;L, and switch
+      less.
+    </div>
+
+    <center style="width:100%; background:#ffffff;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+        border="0"
+        style="width:100%; background:#ffffff;">
+        <tr>
+          <td align="center" valign="top">
+
+            <!--[if mso]>
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td>
+          <![endif]-->
+
+            <table role="presentation" class="email-container" width="600"
+              cellpadding="0" cellspacing="0" border="0"
+              bgcolor="#ffffff"
+              style="width:600px; max-width:600px; background:#ffffff; margin:0 auto;">
+
+              <!-- LOGO -->
+              <tr>
+                <td align="center" style="padding-bottom: 0px;">
+                  <img src="images/logo.jpg" alt="Groww"
+                    style="width:100%; height:auto;">
+                </td>
+              </tr>
+
+              <!-- HERO -->
+              <tr>
+                <td class="mobile-pad" align="center" style="padding:0 34px;">
+                  <h1 class="hero-title"
+                    style="font-size:34px; line-height:39px; font-weight:normal; letter-spacing:-0.4px;font-family: 'Inter Tight', Arial, sans-serif; color: #000000;">
+                    Set <span
+                      style="color:#04B488; font-weight: bold;">stoploss/target</span><br>directly
+                    on chart
+                  </h1>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center">
+                  <img src="images/growwer01.png" alt
+                    style="height: auto; width: 70%; padding-top: 30px; padding-bottom: 20px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center" style="padding:0 80px;">
+                  <p class="hero-subtitle"
+                    style="font-size:16px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:400;">
+                    Placing orders for stoploss and target? Now do it directly
+                    on the chart you're already watching.
+                  </p>
+
+                  <p class="hero-subtitle"
+                    style="font-size:16px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:400; padding-top: 30px; padding-bottom: 15px;">
+                    Set up SL/TGT in 3 easy steps
+                  </p>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <h2 class="hero-subtitle"
+                    style="font-size:20px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:600; padding-top: 30px;">
+                    Tap
+                  </h2>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" style="background-color: #f2fefb;">
+                  <img src="images/growwer02.png" alt
+                    style="height: auto; width: 80%; padding-top: 10px; padding-bottom: 20px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <p class="hero-subtitle"
+                    style="font-size:16px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:400;">
+                    Tap your active position on the chart and click ‘SL/TGT’.
+                  </p>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <h2 class="hero-subtitle"
+                    style="font-size:20px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:600; padding-top: 30px;">
+                    Drag
+                  </h2>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" style="background-color: #f2fefb;">
+                  <img src="images/growwer03.png" alt
+                    style="height: auto; width: 80%; padding-top: 10px; padding-bottom: 20px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <p class="hero-subtitle"
+                    style="font-size:16px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:400;">
+                    Tap and drag stoploss and target to your desired level.
+                  </p>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <h2 class="hero-subtitle"
+                    style="font-size:20px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:600; padding-top: 30px;">
+                    Done
+                  </h2>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" style="background-color: #f2fefb;">
+                  <img src="images/growwer04.png" alt
+                    style="height: auto; width: 80%; padding-top: 10px; padding-bottom: 20px;">
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0 80px; background-color: #f2fefb;">
+                  <p class="hero-subtitle"
+                    style="font-size:16px; line-height:23px; font-family: 'Inter Tight', Arial, sans-serif; color: #000000; font-weight:400; padding-bottom: 20px;">
+                    Tap ‘Confirm’ to place your orders.
+                  </p>
+
+                </td>
+              </tr>
+
+              <!-- VIDEO LINK -->
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:26px 0px 20px 0px;">
+                  <p style="font-size:13px; line-height:20px; color:#353839;">
+
+                    <a href="#" target="_blank" class="video-link" style="
+        color: #5669FF !important;
+        text-decoration: underline !important;
+        font-weight:700 !important;
+        font-family: 'Inter Tight', Arial, sans-serif;
+    ">
+                      <strong style="
+                        font-weight: bold !important;
+                        color: #5669FF !important;
+                        text-decoration: underline !important;
+                    ">
+                        Watch video
+                      </strong>
+                    </a>
+                    to learn more about SL/TGT.
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad" align="center"
+                  style="padding:0px 0px 26px 0px;">
+                  <p
+                    style="font-size:16px; line-height:22px; color:#353839; font-weight:700;font-family: 'Inter Tight', Arial, sans-serif;">
+                    Ready to trade without ever leaving the chart?
+                  </p>
+                </td>
+              </tr>
+
+              <!-- BULLETPROOF CTA -->
+              <tr>
+                <td align="center" style="padding:0 28px 30px;">
+                  <!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="#" style="height:44px;v-text-anchor:middle;width:340px;" arcsize="10%" stroke="f" fillcolor="#00b386">
+                  <w:anchorlock/>
+                  <center style="color:#ffffff;font-family: 'Inter Tight', Arial, sans-serif;font-size:14px;font-weight:bold;letter-spacing:2px;">EXPLORE NOW</center>
+                </v:roundrect>
+                <![endif]-->
+                  <!--[if !mso]><!-- -->
+
+                  <a href="#" target="_blank"
+                    style="background-color:#00D09C; color: #ffffff!important; font-weight:600; text-decoration:none !important; letter-spacing:2px; font-family: 'Inter Tight', Arial, sans-serif;padding: 14px 30px; border-radius: 8px;  font-size: 14px; text-transform: uppercase; display: inline-block;"
+                    class="cta">
+                    EXPLORE NOW
+                  </a>
+                  <!-- <a class="cta-link" href="#" target="_blank" style="display:inline-block; width:340px; max-width:100%; background:#00b386; color:#ffffff !important; font-size:14px; line-height:44px; font-weight:700; letter-spacing:2px; text-align:center; border-radius:5px; text-transform:uppercase;">EXPLORE NOW</a> -->
+                  <!--<![endif]-->
+                </td>
+              </tr>
+
+              <!-- INDIA NO.1 -->
+              <tr>
+                <td style="padding:0 0 26px;">
+                  <table role="presentation" width="100%" cellpadding="0"
+                    cellspacing="0" border="0" bgcolor="#f3fcf8"
+                    style="background:#f3fcf8;">
+                    <tr>
+                      <td align="center" style="padding:24px 18px;">
+                        <!-- <p style="font-size:16px; line-height:22px; letter-spacing:5px; color:#353839; font-weight:600;">INDIA'S <span style="color:#00b386;">NO.1</span></p>
+                      <p style="font-size:16px; line-height:22px; letter-spacing:5px; color:#353839; font-weight:600;">STOCK BROKER</p>
+                      <p style="font-size:12px; line-height:18px; color:#444444; padding-top:7px;">Loved and trusted by 1 Crore+ active investors</p> -->
+
+                        <h2
+                          style="margin: 0; font-size: 16px; font-weight: 500; letter-spacing: 4px; color: #000000;line-height: 1.8;">
+                          INDIA'S <span
+                            style="color: #00b386;letter-spacing: 3.5px;">NO.1</span><br>
+                          STOCK BROKER
+                        </h2>
+                        <p
+                          style="margin: 10px 0 0 0; font-size: 12px; color: #444444;font-family: 'Inter Tight', Arial, sans-serif;">
+                          Loved and trusted by 1 Crore+ active investors
+                        </p>
+
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- SOCIAL -->
+              <tr>
+
+                <td align="center"
+                  style="padding:10px 30px; font-family: Inter Tight, sans-serif; font-size: 14px; color: #333;">
+                  <p style="color:#000;margin-bottom:5px;"><b>Follow us
+                      yet?</b></p>
+                  <span
+                    style="font-size: 12px; color: #777;font-family:Inter Tight, sans-serif;">Our
+                    social
+                    is a treasure box of finance content.</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" style="padding:12px 10px 18px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0"
+                    border="0">
+                    <tr>
+                      <td style="padding:0 7px;"><a
+                          href="https://www.youtube.com/channel/UCw5TLrz3qADabwezTEcOmgQ"
+                          target="_blank"><img src="images/youtube.png"
+                            width="24" alt="YouTube"
+                            style="width:24px; height:auto;"></a></td>
+                      <td style="padding:0 7px;"><a
+                          href="https://www.instagram.com/groww_official/"
+                          target="_blank"><img
+                            src="images/insta.png" width="24" alt="Instagram"
+                            style="width:24px; height:auto;"></a></td>
+                      <td style="padding:0 7px;"><a href="https://x.com/_groww"
+                          target="_blank"><img
+                            src="images/twitter.png" width="24" alt="X"
+                            style="width:24px; height:auto;"></a></td>
+                      <td style="padding:0 7px;"><a
+                          href="https://www.facebook.com/growwapp/"
+                          target="_blank"><img
+                            src="images/facebook.png" width="24" alt="Facebook"
+                            style="width:24px; height:auto;"></a></td>
+                      <td style="padding:0 7px;"><a
+                          href="https://www.linkedin.com/company/groww.in"
+                          target="_blank"><img
+                            src="images/in.png" width="24" alt="LinkedIn"
+                            style="width:24px; height:auto;"></a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center"
+                  style="padding:10px 20px 2px; font-size:12px; line-height:16px; color:#353839;">
+                  &copy; 2020 Groww Invest Tech Pvt. Ltd.
+                </td>
+              </tr>
+
+              <!-- FOOTER COPY -->
+              <tr>
+                <td class="mobile-pad footer-copy" align="center"
+                  style="padding:8px 22px 14px; font-size:12px; line-height:20px; color:#777777; text-align:center;">
+                  Registered office: Vaishnavi Tech Park, South Tower, 3rd
+                  floor, Sarjapur Main Road, Bellandur,
+                  Bengaluru, Karnataka - 560103. You're getting this email
+                  because you're a Groww user and we believe you
+                  deserve great finance content and the latest updates from us.
+                  However, you have the option to <a
+                    href="we_wk_unsubscribe_link" target="_blank"
+                    style="color:#777777; text-decoration:underline;">unsubscribe</a>.
+                  Or if you need help? <a
+                    href="https://groww.in/help" target="_blank"
+                    style="color:#777777; text-decoration:underline;">We're
+                    here for you</a>.
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" style="padding:4px 14px 10px;">
+                  <table role="presentation" class="footer-links"
+                    cellpadding="0" cellspacing="0" border="0">
+
+                    <tr>
+                      <td
+                        style="font-size: 11px; color: #777;text-decoration: underline;">
+                        <a href="https://groww.in/about-us" target="_blank"
+                          style="color: #777; text-decoration: underline;">About
+                          Us</a>
+                      </td>
+                      <td
+                        style="padding: 0 8px; font-size: 11px; color: #777;">|</td>
+                      <td style="font-size: 11px; color: #777;">
+                        <a
+                          href="https://groww.in/pages/terms-and-conditions-groww"
+                          target="_blank"
+                          style="color: #777; text-decoration: underline!important;">Terms
+                          & Conditions</a>
+                      </td>
+                      <td
+                        style="padding: 0 8px; font-size: 11px; color: #777;text-decoration: underline;">|</td>
+                      <td style="font-size: 11px; color: #777;">
+                        <a href="https://groww.in/pages/privacy-policy"
+                          target="_blank"
+                          style="color: #777; text-decoration: underline!important;">Privacy
+                          Policy</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="mobile-pad footer-copy" align="center"
+                  style="padding:8px 22px 26px; font-size:10px;font-family:Inter Tight, sans-serif; line-height:14px; color:#999999; text-align:center;">
+                  Disclaimer: The above-mentioned details have been
+                  collated/prepared by Groww Invest Tech Pvt Ltd and is
+                  meant for sole use by the recipient and not for circulation.
+                  The information contained in this e-mailer
+                  has not been prepared with any account specific investment
+                  objectives, financial situations, or needs of
+                  any particular investor and is intended for general
+                  information purposes only. The information published
+                  should not be used as a substitute for any form of advisory.
+                  Kindly note that investment in securities
+                  markets is subject to market risks, read all the related
+                  documents carefully before investing. The
+                  investor is requested to take into consideration all the risk
+                  factors before the commencement of
+                  trading. Mutual Fund investments are subject to market risks,
+                  read all scheme related documents
+                  carefully. Past performance of the schemes is neither an
+                  indicator nor a guarantee of future
+                  performance. Groww Invest Tech Pvt Ltd - SEBI Registration no:
+                  INZ000301838, Research Analyst no -
+                  INH200008662, DPI Registration no: IN-DP-417-2019 and AMFI
+                  Registration No: ARN-111686.
+                </td>
+              </tr>
+
+            </table>
+
+            <!--[if mso]>
+              </td>
+            </tr>
+          </table>
+          <![endif]-->
+
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+
+</html>
